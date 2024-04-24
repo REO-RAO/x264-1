@@ -1,7 +1,7 @@
 /*****************************************************************************
  * macroblock.c: macroblock common functions
  *****************************************************************************
- * Copyright (C) 2003-2021 x264 project
+ * Copyright (C) 2003-2023 x264 project
  *
  * Authors: Fiona Glaser <fiona@x264.com>
  *          Laurent Aimar <fenrir@via.ecp.fr>
@@ -388,7 +388,7 @@ int x264_macroblock_thread_allocate( x264_t *h, int b_lookahead )
             ((me_range*2+24) * sizeof(int16_t) + (me_range+4) * (me_range+1) * 4 * sizeof(mvsad_t));
         scratch_size = X264_MAX3( buf_hpel, buf_ssim, buf_tesa );
     }
-    int buf_mbtree = h->param.rc.b_mb_tree * ((h->mb.i_mb_width+15)&~15) * sizeof(int16_t);
+    int buf_mbtree = h->param.rc.b_mb_tree * ALIGN( h->mb.i_mb_width * sizeof(int16_t), NATIVE_ALIGN );
     scratch_size = X264_MAX( scratch_size, buf_mbtree );
     if( scratch_size )
         CHECKED_MALLOC( h->scratch_buffer, scratch_size );
@@ -1249,7 +1249,7 @@ static ALWAYS_INLINE void macroblock_cache_load( x264_t *h, int mb_x, int mb_y, 
                 if( h->mb.cache.varref[l][index] >= 0 )\
                 {\
                     h->mb.cache.varref[l][index] >>= 1;\
-                    h->mb.cache.varmv[l][index][1] <<= 1;\
+                    h->mb.cache.varmv[l][index][1] *= 2;\
                     h->mb.cache.mvd[l][index][1] <<= 1;\
                 }
                 MAP_MVS
