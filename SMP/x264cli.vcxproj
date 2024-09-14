@@ -284,7 +284,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_10b|x64'">
     <IntDir>$(SolutionDir)obj\$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
     <TargetName>x264cli_10bd</TargetName>
-    <OutDir>$(SolutionDir)obj\$(Platform)\</OutDir>
+    <OutDir>..\bin</OutDir>
     <CustomBuildAfterTargets>Clean</CustomBuildAfterTargets>
     <LocalDebuggerWorkingDirectory>$(OutDir)\bin\x64\</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
@@ -312,7 +312,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_10b|x64'">
     <IntDir>$(SolutionDir)obj\$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
     <TargetName>x264cli_10b</TargetName>
-    <OutDir>$(SolutionDir)obj\$(Platform)\</OutDir>
+    <OutDir>..\bin</OutDir>
     <CustomBuildAfterTargets>Clean</CustomBuildAfterTargets>
     <LocalDebuggerWorkingDirectory>$(OutDir)\bin\x64\</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
